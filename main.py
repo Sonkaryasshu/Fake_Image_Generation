@@ -1,13 +1,15 @@
-#!/usr/bin/env python
-# coding: utf-8
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 24 18:35:57 2019
 
-# In[1]:
-
+@author: sonka
+"""
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-get_ipython().run_line_magic('matplotlib', 'inline')
+%matplotlib inline
 
 import keras
 from keras.layers import Dense, Dropout, Input
@@ -16,10 +18,6 @@ from keras.datasets import mnist
 from tqdm import tqdm
 from keras.layers.advanced_activations import LeakyReLU
 from keras.optimizers import adam
-
-
-# In[2]:
-
 
 def load_data():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -36,11 +34,7 @@ print(X_train.shape)
 def adam_optimizer():
     return Adam(lr=0.0002, beta_1=0.5)
 
-
-# In[ ]:
-
-
-ef create_generator():
+def create_generator():
     generator=Sequential()
     generator.add(Dense(units=256,input_dim=100))
     generator.add(LeakyReLU(0.2))
@@ -57,10 +51,6 @@ ef create_generator():
     return generator
 g=create_generator()
 g.summary()
-
-
-# In[ ]:
-
 
 def create_discriminator():
     discriminator=Sequential()
@@ -83,10 +73,6 @@ def create_discriminator():
 d =create_discriminator()
 d.summary()
 
-
-# In[ ]:
-
-
 def create_gan(discriminator, generator):
     discriminator.trainable=False
     gan_input = Input(shape=(100,))
@@ -99,10 +85,6 @@ def create_gan(discriminator, generator):
 gan = create_gan(d,g)
 gan.summary()
 
-
-# In[3]:
-
-
 def plot_generated_images(epoch, generator, examples=100, dim=(10,10), figsize=(10,10)):
     noise= np.random.normal(loc=0, scale=1, size=[examples, 100])
     generated_images = generator.predict(noise)
@@ -114,11 +96,7 @@ def plot_generated_images(epoch, generator, examples=100, dim=(10,10), figsize=(
         plt.axis('off')
     plt.tight_layout()
     plt.savefig('gan_generated_image %d.png' %epoch)
-
-
-# In[ ]:
-
-
+    
 def training(epochs=1, batch_size=128):
     
     #Loading the data
@@ -170,4 +148,3 @@ def training(epochs=1, batch_size=128):
            
             plot_generated_images(e, generator)
 training(400,128)
-
