@@ -52,9 +52,9 @@ Meanwhile, the generator is creating new, synthetic images that it passes to the
 **Note:** I am using Ubuntu 18.04 with anaconda environment and python-3.6.8
 
 1. Get this project to your local system
-
+	>git clone https://github.com/Sonkaryasshu/Fake_Image_Generation.git
 2. Change directory to current project
-	>cd fake_image_generator
+	>cd fake_image_generation
 
 3. Create virtual environment ***[Optional]***  
 Using Anaconda here( You may use python venv)
