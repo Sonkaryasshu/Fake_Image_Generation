@@ -3,13 +3,13 @@
 """
 Created on Mon Jun 24 18:35:57 2019
 
-@author: sonka
+@author: SONKARyasshu
 """
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-%matplotlib inline
+#%matplotlib inline
 
 import keras
 from keras.layers import Dense, Dropout, Input
@@ -32,7 +32,7 @@ def load_data():
 print(X_train.shape)
 
 def adam_optimizer():
-    return Adam(lr=0.0002, beta_1=0.5)
+    return adam(lr=0.0002, beta_1=0.5)
 
 def create_generator():
     generator=Sequential()
